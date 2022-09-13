@@ -14,7 +14,6 @@ export class CharacterCardComponent implements OnInit {
   constructor() {}
 
   resetCharacter() {
-    console.log(this.characterCopy);
     this.character = this.characterCopy;
   }
 
