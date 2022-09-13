@@ -1,0 +1,33 @@
+<div class="card">
+  <img
+    class="card-img-top"
+    src="{{ character.image }}"
+    alt="{{ character.name }}"
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{ character.name }}</h5>
+    <p class="card-text">Type: {{ character.type }}</p>
+    <p class="card-text">Location: {{ character.location.name }}</p>
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="character.location.name"
+    />
+    <button class="btn btn-info" (click)="resetCharacter()">Reset</button>
+    <button class="btn btn-info" (click)="printCharacter(character)">
+      Print
+    </button>
+  </div>
+  <div class="card-footer">
+    <p
+      class="alert"
+      [ngClass]="{
+        'alert-success': character.status == 'Alive',
+        'alert-danger': character.status == 'Dead',
+        'alert-warning': character.status == 'unknown'
+      }"
+    >
+      {{ character.status }}
+    </p>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<section class="main">
+  <div class="container">
+    <div class="row header__group">
+      <h1>Rick And Morty APP</h1>
+    </div>
+    <div class="row body__group" *ngIf="listCharacters$ | async as characters">
+      <div
+        class="col-sm-12 col-md-6 col-lg-4"
+        *ngFor="let character of characters.results"
+      >
+        <app-character-card
+          [character]="character"
+          (printCharacterEvent)="printCharacter($event)"
+        ></app-character-card>
+      </div>
+    </div>
+    <div class="row footer__group"></div>
+  </div>
+</section>
