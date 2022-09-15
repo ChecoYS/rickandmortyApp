@@ -13,10 +13,13 @@
       class="form-control"
       [(ngModel)]="character.location.name"
     />
-    <button class="btn btn-info" (click)="resetCharacter()">Reset</button>
-    <button class="btn btn-info" (click)="printCharacter(character)">
-      Print
-    </button>
+    <div class="actions__group">
+      <p class="text-muted">Actions</p>
+      <button class="btn btn-info" (click)="resetCharacter()">Reset</button>
+      <button class="btn btn-info" (click)="printCharacter(character)">
+        Print
+      </button>
+    </div>
   </div>
   <div class="card-footer">
     <p

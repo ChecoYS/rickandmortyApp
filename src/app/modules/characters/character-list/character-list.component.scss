@@ -1,5 +1,22 @@
 .main {
   width: 100%;
   min-height: 100vh;
-  background-color: #3498db;
+  background-color: #2ecc71;
+
+  .header__group {
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .body__group {
+    padding-top: 15px;
+  }
+
+  .footer__group {
+    padding: 15px 0px 20px 0px;
+    button {
+      float: right;
+      margin-left: 10px;
+    }
+  }
 }

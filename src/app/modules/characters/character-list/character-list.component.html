@@ -1,19 +1,46 @@
 <section class="main">
   <div class="container">
     <div class="row header__group">
-      <h1>Rick And Morty APP</h1>
-    </div>
-    <div class="row body__group" *ngIf="listCharacters$ | async as characters">
-      <div
-        class="col-sm-12 col-md-6 col-lg-4"
-        *ngFor="let character of characters.results"
-      >
-        <app-character-card
-          [character]="character"
-          (printCharacterEvent)="printCharacter($event)"
-        ></app-character-card>
+      <div class="col-12">
+        <h1>Rick And Morty APP</h1>
+        <input
+          [(ngModel)]="searchedCharacter"
+          class="form-control form-control-group"
+          placeholder="Buscar..."
+          (input)="nextPage(apiURL + '/?name=' + searchedCharacter)"
+        />
       </div>
     </div>
-    <div class="row footer__group"></div>
+    <ng-container *ngIf="listCharacters$ | async as response">
+      <div class="row body__group">
+        <div
+          class="col-sm-12 col-md-6 col-lg-4"
+          *ngFor="let character of response.results"
+        >
+          <app-character-card
+            [character]="character"
+            (printCharacterEvent)="printCharacter($event)"
+          ></app-character-card>
+        </div>
+      </div>
+      <div class="row footer__group">
+        <div class="col-12">
+          <button
+            class="btn btn-info"
+            [disabled]="!response.info.next"
+            (click)="nextPage(response.info.next)"
+          >
+            Next
+          </button>
+          <button
+            class="btn btn-info"
+            [disabled]="!response.info.prev"
+            (click)="nextPage(response.info.prev)"
+          >
+            Prev
+          </button>
+        </div>
+      </div>
+    </ng-container>
   </div>
 </section>
